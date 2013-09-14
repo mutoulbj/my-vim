@@ -6,86 +6,39 @@ call pathogen#helptags()
 
 filetype plugin indent on
 syntax on
+
+
+" 常规设置
 set nu
+set showmatch " 代码匹配
+set laststatus=2 " 总是显示状态行
+set expandtab  " 以下三个配合使用,设置tab和缩进空格数
+set shiftwidth=4
+set tabstop=4
+set cursorline "为光标所在行设置下划线
+set autoread "文件在其他地方编辑过自动载入
+set ignorecase "检索时忽略大小写
+set fileencodings=utf-8,gbk "使用utf-8或者gbk打开文件
+set hls " 检索时高亮匹配项 
+set helplang=cn " 设置帮助文档为中文
+set foldmethod=syntax  " 代码折叠
+set nobackup   " 以下两行禁止生成缓存文件和备份文件
+set nowritebackup
 
-" disable pylint checking every save
-let g:pymode_lint_write = 0
+" 插件相关设置  
+" powerline
+set guifont=PowerlineSymbols\ for\ Powerline
+set nocompatible
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
 
-" set key 'R' for run python code
-let g:pymode_run_key = 'R'
+" pathogen是vim插件管理的插件
+let g:pymode_lint_write = 0 " disable pylint checking every save
+let g:pymode_run_key = 'R' " set key 'R' for run python code
 
-" load the whole plugin
-let g:pymode = 1
-
-" load show documentation plugin
-let g:pymode_doc = 1
-
-" key for show python documentation
-let g:pymode_doc_key = "K"
-
-" load run code plugin
-let g:pymode_run = 1
-
-" key for run python code
-let g:pymode_run_key = "<leader>r"
-
-" load pylint code plugin
-let g:pymode_lint = 1
-
-" Switch pylint, pyflakes, pep8, mccabe code-checkers
-" " Can have multiply values "pep8,pyflakes,mcccabe"
-" " Choices are pyflakes, pep8, mccabe, pylint, pep257
- let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
-
-" " Skip errors and warnings
-" " E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors startswith E2) and
-" etc
- let g:pymode_lint_ignore = "E501"
-
-" " Select errors and warnings
-" " E.g. "E4,W"
- let g:pymode_lint_select = ""
-
-" " Run linter on the fly
- let g:pymode_lint_onfly = 0
-
-" Pylint configuration file
-" " If file not found use 'pylintrc' from python-mode plugin directory
- let g:pymode_lint_config = "$HOME/.pylintrc"
-
-" Check code every save
-let g:pymode_lint_write = 1
-
-" Auto open cwindow if errors were found
-let g:pymode_lint_cwindow = 1
-
-" Show error message if cursor placed at the error line
-let g:pymode_lint_message = 1
-
-" Auto jump on first error
-let g:pymode_lint_jump = 0
-
-" Hold cursor in current window
-" when quickfix is open
-let g:pymode_lint_hold = 0
-
-" Place error signs
-let g:pymode_lint_signs = 1
-
-" Maximum allowed mccabe complexity
-let g:pymode_lint_mccabe_complexity = 8
-
-" Minimal height of pylint error window
-let g:pymode_lint_minheight = 3
-
-" Maximal height of pylint error window
-let g:pymode_lint_maxheight = 6
-
-" enable python folding
-let g:pymode_folding = 1
-
-" enable python objects and motion
-let g:pymode_motion = 1
-
-" auto fix vim python path if virtualenv enabled
-let g:pymode_virtualenv = 1
+" NERDTree
+autocmd VimEnter * NERDTree   " 打开vim时自动打开NERDTree
+"let NERDTreeShowBookmarks=1   " 当打开 NERDTree 窗口时，自动显示 Bookmarks
+" 设置Control+L为打开/关闭NERDTree的快捷键
+nmap <silent> <C-L> :NERDTreeToggle<CR> 
+autocmd VimEnter * wincmd p   " 打开NERDTree时光标停在编辑界面
