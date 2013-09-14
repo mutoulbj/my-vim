@@ -24,6 +24,8 @@ set helplang=cn " 设置帮助文档为中文
 set foldmethod=syntax  " 代码折叠
 set nobackup   " 以下两行禁止生成缓存文件和备份文件
 set nowritebackup
+" 使用jj代替Esc键
+imap jj <esc>  
 
 " 插件相关设置  
 " powerline
